@@ -18,7 +18,7 @@ A declaration for Canvas dimensions 800x400 and border styling is as shown:
 
 This will render the game space, of dimensions 800x400 with appropriate border styling, in your browser window(by default a canvas has no border or content)- 
 
-![blank canvas](/home/user1/Downloads/index2.html.jpg)
+![blank canvas](https://github.com/txrun/snake-game/blob/master/screenshots/ss1.jpg)
 
 <screenshot>
 
@@ -83,7 +83,7 @@ function drawSnake()
 
 At this point we have a snake of length five that sits motionless at the top left corner of the canvas.
 
-<screenshot>
+![Default Snake](https://github.com/txrun/snake-game/blob/master/screenshots/ss2.png)
 
 
 ####The Game Loop####
@@ -158,10 +158,12 @@ document.onkeypress = function (event)
 
 At this point the output will be something like this - 
 
-<screenshot of snake trail>
+![Snake Trail](https://github.com/txrun/snake-game/blob/master/screenshots/ss3.png)
 
 The snake is leaving behind a trail! To solve this simply use the splice() and delete a cell from the back of the snake. Now we have a snake of length 5 units capable of moving across the canvas.
-<screenshots 3nos>
+![Screenshot1](https://github.com/txrun/snake-game/blob/master/screenshots/ss4.png)
+![Screenshot2](https://github.com/txrun/snake-game/blob/master/screenshots/ss5.png)
+![Screenshot3](https://github.com/txrun/snake-game/blob/master/screenshots/ss6.png)
 
 ###Generate food for the snake###
 The next step is to generate the food item at a random location for the snake to grow in length during the game. The x and y coordinates for the position of the food is randomly generated using the Math.random() , and since the values have a upper and lower bound (the dimensions of the canvas) the values are kept in range using the Math.floor(). The food item is rendered in the same size of a single cell of the snake using the methods newFoodCoordinates() and renderFood().
