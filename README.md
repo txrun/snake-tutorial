@@ -18,6 +18,8 @@ A declaration for Canvas dimensions 800x400 and border styling is as shown:
 
 This will render the game space, of dimensions 800x400 with appropriate border styling, in your browser window(by default a canvas has no border or content)- 
 
+![blank canvas](/home/user1/Downloads/index2.html.jpg)
+
 <screenshot>
 
 
