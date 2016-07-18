@@ -1,7 +1,6 @@
 # snake-tutorial
 
 
-
 Its been a only a couple of months since I started learning JavaScript, and one of the expert tip I got was to try, tackle and solve the classic snake game. For someone who has had no experience in programming the initial thought of dealing with the problem was a rush regarding the approach I should take - from the point from where I should start solving it, the data structure I should be using, or how I will even get to display the graphics, how the snake should be represented,etc. For this reason, from this point in on I'll call it the snake problem rather than the snake game.
 
 
