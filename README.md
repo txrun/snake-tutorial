@@ -1,14 +1,14 @@
 # snake-tutorial
 
 
-Its been a only a couple of months since I started learning JavaScript, and one of the expert tip I got was to try, tackle and solve the classic snake game. For someone who has had no experience in programming the initial thought of dealing with the problem was a rush regarding the approach I should take - from the point from where I should start solving it, the data structure I should be using, or how I will even get to display the graphics, how the snake should be represented,etc. For this reason, from this point in on I'll call it the snake problem rather than the snake game.
+It has been only a couple of months since I started learning JavaScript, and one of the expert tips I got was to try, tackle and solve the classic snake game. For someone who has had no experience in programming the initial thought of dealing with the problem was a rush regarding the approach I should take - from the point of where I should start solving it, the data structure I should be using, or how I will even get to display the graphics, how the snake should be represented,etc. For this reason, from this point on I'll call it the snake problem rather than the snake game.
 
 
 ###The Canvas###
-A simple Google search led me to discovering the html element <canvas> which is a useful for displaying graphics and animations in the browser. So at this point I had a tool for my game screen, this definite amount of space where my game should happen.
+A simple Google search led me to discover the HTML element <canvas> which is useful for displaying graphics and animations in the browser. So at this point, I had a tool for my game screen, this definite amount of space where my game should happen.
 
 
-A declaration for Canvas dimensions 800x400 and border styling is as shown:
+A declaration for Canvas with dimensions 800x400 and border styling is as shown:
 
 ```
 	<canvas id ="myCanvas" width="800" height="400" style="border:1px solid #111; border-radius:5px"></canvas>	
@@ -22,17 +22,17 @@ This will render the game space, of dimensions 800x400 with appropriate border s
 <screenshot>
 
 
-The different functionalities of the game will be encapsulated into the different functions. These include: 
+The different functionalities of the game will be encapsulated into the different functions. This include: 
 * Drawing an initial snake of default length
 * Rendering this snake
-* Make the snake move across the canvas along the x and y axes
+* Make the snake move across the canvas along the x and y-axes
 * Generating the food element
 * The snake growing in length having eaten the food
 * Keep a tab of this by recording a score, finally detect a collision if the snake runs into itself or a wall.
 
 Before anything, the first thing is to decide how the snake should be represented. For this game, the snake game is displayed in the form of a string of square cells - each square represents a food item eaten by the snake.
 
-Here we have a default length of 5 for the snake. Length of the snake = no. of squares in the snake.
+Here we have a default length of 5 for the snake. The length of the snake = no. of squares in the snake.
 
 In order to draw graphics on the canvas using JavaScript, we need an object of the getContext() method.
 
@@ -44,7 +44,7 @@ var ctx = canvas.getContext("2d");
 ###The default Snake###
 So, the first thing we can do is draw a stationary snake; a snake at the starting position, the starting position being the top left corner. Three methods are defined for this purpose - initialSnakeCoordinates(), paintCell(), and drawSnake().
 
-initialSnakeCoordinates() populates an array pos[] with the x and y coordinates for default position of the initial length of cells. paintCell() is used to paint a single cell. drawSnake() calls the method paintCell() for each unit length of the snake.
+initialSnakeCoordinates() populates an array pos[] with the x and y coordinates for the default position of the initial length of cells. paintCell() is used to paint a single cell. drawSnake() calls the method paintCell() for each unit length of the snake.
 The code at this point  - 
 
 ```
@@ -82,14 +82,14 @@ At this point we have a snake of length five that sits motionless at the top lef
 
 
 ####The Game Loop####
-An important aspect while implementing any game is the game loop. A game loop pumps the game forward. Here, there is a function which implements the game loop called gameLoop(). gameLoop() renders and initialises the snake, renders the snake after each step it has taken, renders the food and displays the score - all this done as long as the value of the global boolean variable isGameLive is ‘true’. The variable isGameLive comes in handy when game needs to exit from the game loop when the snake dies from collision.
+An important aspect while implementing any game is the game loop. A game loop pumps the game forward. Here, there is a function which implements the game loop called gameLoop(). gameLoop() renders and initialises the snake, renders the snake after each step it has taken, renders the food and displays the score - all this done as long as the value of the global boolean variable isGameLive is ‘true’. The variable isGameLive comes in handy when the game needs to exit from the game loop when the snake dies from a collision.
 The gameLoop() is called at regular intervals using the setInterval() method. The drawSnake() method is moved into the gameLoop().
 
 
 ###Move the snake along the X & Y axes###
-Next we have to animate the snake - make it move along the two axes of the canvas using keystrokes for the different directions. Here we will be using the WASD keys to make the snake move up, left, down, and right along the canvas.
+Next, we have to animate the snake - make it move along the two axes of the canvas using keystrokes for the different directions. Here we will be using the WASD keys to make the snake move up, left, down, and right along the canvas.
 
-When the game starts, by default the snake should be moving right. For this purpose we have a global variable currentDirection assigned with the value "right". Now for each value of currentDirection(left, right, up or down) we need respective conditions so the snake takes up or follows that direction. These conditions for direction of movement of the snake is written in the function makeNextMove(). The change in direction is employed using the position of the head of the snake which is obtained using the snakeHead() method. 
+When the game starts, by default the snake should be moving right. For this purpose, we have a global variable currentDirection assigned with the value "right". Now for each value of currentDirection(left, right, up or down) we need respective conditions so the snake takes up or follows that direction. These conditions for the direction of movement of the snake is written in the function makeNextMove(). The change in direction is employed using the position of the head of the snake which is obtained using the snakeHead() method. 
 
 ```
 function snakeHead(snakeArray) {
@@ -159,7 +159,7 @@ The snake is leaving behind a trail! To solve this simply use the splice() and d
 ![Screenshot3](https://github.com/txrun/snake-game/blob/master/screenshots/ss6.png)
 
 ###Generate food for the snake###
-The next step is to generate the food item at a random location for the snake to grow in length during the game. The x and y coordinates for the position of the food is randomly generated using the Math.random() , and since the values have a upper and lower bound (the dimensions of the canvas) the values are kept in range using the Math.floor(). The food item is rendered in the same size of a single cell of the snake using the methods newFoodCoordinates() and renderFood().
+The next step is to generate the food item at a random location for the snake to grow in length during the game. The x and y coordinates for the position of the food is randomly generated using the Math.random() , and since the values have an upper and lower bound (the dimensions of the canvas) the values are kept in range using the Math.floor(). The food item is rendered in the same size of a single cell of the snake using the methods newFoodCoordinates() and renderFood().
 
 ```
 function newFoodCoordinates() {
@@ -184,7 +184,7 @@ function renderFood() {
 
 And call the renderFood() method in the gameLoop().
 
-Now that we have a snake of minimum length and a food item being spawned at random location in the canvas , the next logical step is to facilitate the snake to eat the cake and simultaneously keep a tab of it by defining a method scoreCard(). To let the snake eat the food we define a method eatFood() which checks to see if the coordinates of the snake’s head  matches with that of the spawned food. If it does eatFood() returns a true value or else a false. The eatFood() method is invoked inside makeNextMove() where, if the snake eats food the score is recorded and newFoodCoordinates() is invoked to spawn food at the next random location in the canvas, and if the food is not eaten the splice() method is called to keep the length of the snake same as before.
+Now that we have a snake of minimum length and a food item being spawned at a random location in the canvas , the next logical step is to facilitate the snake to eat the cake and simultaneously keep a tab of it by defining a method scoreCard(). To let the snake eat the food we define a method eatFood() which checks to see if the coordinates of the snake’s head  match with that of the spawned food. If it does eatFood() returns a true value or else a false. The eatFood() method is invoked inside makeNextMove() where, if the snake eats food the score is recorded and newFoodCoordinates() is invoked to spawn food at the next random location in the canvas, and if the food is not eaten the splice() method is called to keep the length of the snake same as before.
 
 ```
 function newFoodCoordinates() {
@@ -223,7 +223,7 @@ function scoreCard() {
 
 ```
 
-Finally, when is “Game Over!!” ?? For our basic snake game we are not introducing any obstacles in the path of the snake. So, the only scenario when the snake will die is when it collides on itself. What I have done here is create a temp variable tempArray which has the contents of the snakeArray i.e. the coordinate pair values for each cell of the snake. Based on the direction of the snake a condition is formulated to see whether the coordinates of the head of the snake matches with that of any of the values in the tempArray. If it matches it means the snake has collided with itself and we exit from the game.
+Finally, when is “Game Over!!” ?? For our basic snake game, we are not introducing any obstacles in the path of the snake. So, the only scenario when the snake will die is when it collides on itself. What I have done here is create a temp variable tempArray which has the contents of the snakeArray i.e. the coordinate pair values for each cell of the snake. Based on the direction of the snake a condition is formulated to see whether the coordinates of the head of the snake matches with that of any of the values in the tempArray. If it matches it means the snake has collided with itself and we exit the game.
 If the snake is moving to the right at present the code snippet will look like this - 
 
 ```
@@ -266,10 +266,10 @@ if (head.y + 1 == tempArray[i].y && head.x == tempArray[i].x) {
 }
 ```
 
-Now, our game has a snake moving around and growing in length when it eats food that is being generated at random location, simultaneously keeping a record of the score, and finally dies if it collides into itself.
+Now, our game has a snake moving around and growing in length when it eats food that is being generated at the random location, simultaneously keeping a record of the score, and finally dies if it collides into itself.
 
 Right now the only loose end is as to what should happen when the snake reaches the limits of the canvas? We have two options - it can either die or wrap around to the opposite edge. Here, I am sticking with the latter and let the snake wrap around.
-So, to wrap around, at the point where the snakeArray.push() is being invoked we check if the position of the head of the snake has reached the limits of the canvas, and when it does reinitialise the values of the coordinates of the head with that of the opposite edge of the canvas.
+So, to wrap around, at the point where the snakeArray.push() is being invoked we check if the position of the head of the snake has reached the limits of the canvas, and when it does reinitialize the values of the coordinates of the head with that of the opposite edge of the canvas.
 
 For example, if the snake has reached the right edge of the canvas if-condition will be 
 
@@ -288,7 +288,7 @@ if (head.x > 79) {
 }
 ```
 
-Ok, to clear up two things - why the number 79?, and why only one of the coordinate value pair is checked? Well the answer to first question - remember we use cells of size 10? So if the head.x has value 79 it means it is at position 79x10 = 790 of the canvas, and the next value of head.x =80 is at 800th pixel of the canvas(remember our canvas size is 800x400?). The answer to the second question as to why only a single value of the coordinate pair is checked - simple mathematics, or in this case geometry! The snake is moving across the horizontal axis here which means y-value of the coordinate pair remains same. Similarly, for when the snake is moving across the vertical axes x-value of the coordinate pair remains the same. So, the code for the snake to wrap around while it moves in the up direction will be - 
+Ok, to clear up two things - why the number 79? and why only one of the coordinate value pair is checked? Well, the answer to first question - remember we use cells of size 10? So if the head.x has value 79 it means it is at position 79x10 = 790 of the canvas, and the next value of head.x =80 is at the 800th pixel of the canvas(remember our canvas size is 800x400?). The answer to the second question as to why only a single value of the coordinate pair is checked - simple mathematics, or in this case geometry! The snake is moving across the horizontal axis here which means y-value of the coordinate pair remains same. Similarly, for when the snake is moving along the vertical axes x-value of the coordinate pair remains the same. So, the code for the snake to wrap around while it moves in the up direction will be - 
 
 ```
 if (head.y < 0) {
